@@ -11,9 +11,10 @@ from sqlalchemy import Table, Column, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 import os
+import secrets
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
+app.secret_key = secrets.token_hex(16)
 ckeditor = CKEditor(app)
 Bootstrap(app)
 
